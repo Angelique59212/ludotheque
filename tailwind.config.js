@@ -13,6 +13,7 @@ module.exports = {
         'pColor' : '#222222',
         'footer' : '#222222',
         'button': '#A6D7D7',
+        'input': '#D9D9D9',
       },
       fontFamily: {
         'popp': ['Poppins', 'sans-serif'],
