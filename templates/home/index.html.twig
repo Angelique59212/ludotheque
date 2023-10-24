@@ -3,10 +3,19 @@
     {{ encore_entry_link_tags('app') }}
     {{ encore_entry_link_tags('carousel') }}
 {% endblock %}
-
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
+    <header class="bg-header h-32 text-white flex items-center fixed top-0 w-full z-50">
+        <div class="w-1/4">
+            <img class="w-36" src="{{ asset('build/img/logo.png') }}" alt="logo">
+        </div>
+        <h1 class="text-3xl font-bold text-center flex-1">ANGELIKA LIBRARY</h1>
+        <div class="w-1/4 text-right">
+            <a class="text-link mr-4" href="{{ path('app_register') }}">Inscription</a>
+            <a class="text-link mr-4" href="{{ path('app_login') }}">Connexion</a>
+        </div>
+    </header>
     <main class="mt-32">
         <div class="text-center">
             <h1 class=" mt-36 text-h1Home text-h1 font-popp">Votre ludothèque online</h1>
@@ -19,32 +28,32 @@
                 <div class=" ml-32 overflow-hidden swiper-container mySwiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <img src="{{ asset('build/img/book1.jpeg') }}" alt="book"/>
+                            <img src="{{ asset('build/img/book1.png') }}" alt="book"/>
                         </div>
                         <div class="swiper-slide">
-                            <img src="{{ asset('build/img/book2.jpeg') }}" alt="book"/>
+                            <img src="{{ asset('build/img/book2.png') }}" alt="book"/>
                         </div>
                         <div class="swiper-slide">
-                            <img src="{{ asset('build/img/book3.jpeg') }}" alt="book"/>
+                            <img src="{{ asset('build/img/book3.png') }}" alt="book"/>
                         </div>
                         <div class="swiper-slide">
-                            <img src="{{ asset('build/img/book4.jpeg') }}" alt="book"/>
+                            <img src="{{ asset('build/img/book4.png') }}" alt="book"/>
                         </div>
                     </div>
                     <div class="mt-4">
                         <div class="overflow-hidden swiper-container mySwiper ">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
-                                    <img src="{{ asset('build/img/book1.jpeg') }}" alt="book"/>
+                                    <img src="{{ asset('build/img/board-game1.png') }}" alt="board-game"/>
                                 </div>
                                 <div class="swiper-slide">
-                                    <img src="{{ asset('build/img/book2.jpeg') }}" alt="book"/>
+                                    <img src="{{ asset('build/img/board-game2.png') }}" alt="board-game"/>
                                 </div>
                                 <div class="swiper-slide">
-                                    <img src="{{ asset('build/img/book3.jpeg') }}" alt="book"/>
+                                    <img src="{{ asset('build/img/board-game3.png') }}" alt="board-game"/>
                                 </div>
                                 <div class="swiper-slide">
-                                    <img src="{{ asset('build/img/book4.jpeg') }}" alt="book"/>
+                                    <img src="{{ asset('build/img/board-game4.png') }}" alt="board-game"/>
                                 </div>
                             </div>
                         </div>
@@ -58,32 +67,32 @@
                 <div class=" ml-44 overflow-hidden swiper-container mySwiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <img src="{{ asset('build/img/book1.jpeg') }}" alt="book"/>
+                            <img src="{{ asset('build/img/manga1.png') }}" alt="manga"/>
                         </div>
                         <div class="swiper-slide">
-                            <img src="{{ asset('build/img/book2.jpeg') }}" alt="book"/>
+                            <img src="{{ asset('build/img/manga2.png') }}" alt="manga"/>
                         </div>
                         <div class="swiper-slide">
-                            <img src="{{ asset('build/img/book3.jpeg') }}" alt="book"/>
+                            <img src="{{ asset('build/img/manga3.png') }}" alt="manga"/>
                         </div>
                         <div class="swiper-slide">
-                            <img src="{{ asset('build/img/book4.jpeg') }}" alt="book"/>
+                            <img src="{{ asset('build/img/manga4.png') }}" alt="manga"/>
                         </div>
                     </div>
                     <div class="mt-4">
                         <div class=" overflow-hidden swiper-container mySwiper">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
-                                    <img src="{{ asset('build/img/book1.jpeg') }}" alt="book"/>
+                                    <img src="{{ asset('build/img/games1.png') }}" alt="games"/>
                                 </div>
                                 <div class="swiper-slide">
-                                    <img src="{{ asset('build/img/book2.jpeg') }}" alt="book"/>
+                                    <img src="{{ asset('build/img/games2.png') }}" alt="games"/>
                                 </div>
                                 <div class="swiper-slide">
-                                    <img src="{{ asset('build/img/book3.jpeg') }}" alt="book"/>
+                                    <img src="{{ asset('build/img/games3.png') }}" alt="games"/>
                                 </div>
                                 <div class="swiper-slide">
-                                    <img src="{{ asset('build/img/book4.jpeg') }}" alt="book"/>
+                                    <img src="{{ asset('build/img/games4.png') }}" alt="games"/>
                                 </div>
                             </div>
                         </div>
