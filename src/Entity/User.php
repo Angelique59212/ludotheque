@@ -5,7 +5,6 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -38,9 +37,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 50)]
     private ?string $pseudo = null;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Library::class, orphanRemoval: true)]
+    private Collection $library;
+
     public function __construct()
     {
         $this->borrows = new ArrayCollection();
+        $this->library = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -114,7 +117,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, Borrow>
+     * @return Collection
      */
     public function getBorrows(): Collection
     {
@@ -151,6 +154,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPseudo(string $pseudo): static
     {
         $this->pseudo = $pseudo;
+
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection|Collection
+     */
+    public function getLibrary(): ArrayCollection|Collection
+    {
+        return $this->library;
+    }
+
+    public function addLibrary(Library $library): static
+    {
+        if (!$this->library->contains($library)) {
+            $this->library->add($library);
+            $library->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLibrary(Library $library): static
+    {
+        if ($this->library->removeElement($library)) {
+            // set the owning side to null (unless already changed)
+            if ($library->getUser() === $this) {
+                $library->setUser(null);
+            }
+        }
 
         return $this;
     }

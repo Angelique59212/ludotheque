@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\CollectionRepository;
+use App\Repository\LibraryRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: CollectionRepository::class)]
-class Collection
+#[ORM\Entity(repositoryClass: LibraryRepository::class)]
+class Library
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -15,6 +15,10 @@ class Collection
 
     #[ORM\Column(length: 50)]
     private ?string $name = null;
+
+    #[ORM\ManyToOne(inversedBy: 'library')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
 
     public function getId(): ?int
     {
@@ -29,6 +33,18 @@ class Collection
     public function setName(string $name): static
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }

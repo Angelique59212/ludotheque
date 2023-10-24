@@ -33,7 +33,7 @@ class ItemsCollection
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $language = null;
 
-    #[ORM\OneToMany(mappedBy: 'itemÃs_collectio', targetEntity: Borrow::class)]
+    #[ORM\OneToMany(mappedBy: 'itemï¿½s_collectio', targetEntity: Borrow::class)]
     private Collection $borrows;
 
     public function __construct()
@@ -119,7 +119,7 @@ class ItemsCollection
     }
 
     /**
-     * @return Collection<int, Borrow>
+     * @return Library<int, Borrow>
      */
     public function getBorrows(): Collection
     {
@@ -130,7 +130,7 @@ class ItemsCollection
     {
         if (!$this->borrows->contains($borrow)) {
             $this->borrows->add($borrow);
-            $borrow->setItemÃsCollectio($this);
+            $borrow->setItemï¿½sCollectio($this);
         }
 
         return $this;
@@ -140,8 +140,8 @@ class ItemsCollection
     {
         if ($this->borrows->removeElement($borrow)) {
             // set the owning side to null (unless already changed)
-            if ($borrow->getItemÃsCollectio() === $this) {
-                $borrow->setItemÃsCollectio(null);
+            if ($borrow->getItemï¿½sCollectio() === $this) {
+                $borrow->setItemï¿½sCollectio(null);
             }
         }
 
