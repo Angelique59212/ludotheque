@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\LibraryRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: LibraryRepository::class)]
@@ -22,6 +24,14 @@ class Library
 
     #[ORM\ManyToOne(inversedBy: 'library')]
     private ?Category $category = null;
+
+    #[ORM\OneToMany(mappedBy: 'library', targetEntity: ItemsCollection::class)]
+    private Collection $itemsCollections;
+
+    public function __construct()
+    {
+        $this->itemsCollections = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -60,6 +70,36 @@ class Library
     public function setCategory(?Category $category): static
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ItemsCollection>
+     */
+    public function getItemsCollections(): Collection
+    {
+        return $this->itemsCollections;
+    }
+
+    public function addItemsCollection(ItemsCollection $itemsCollection): static
+    {
+        if (!$this->itemsCollections->contains($itemsCollection)) {
+            $this->itemsCollections->add($itemsCollection);
+            $itemsCollection->setLibrary($this);
+        }
+
+        return $this;
+    }
+
+    public function removeItemsCollection(ItemsCollection $itemsCollection): static
+    {
+        if ($this->itemsCollections->removeElement($itemsCollection)) {
+            // set the owning side to null (unless already changed)
+            if ($itemsCollection->getLibrary() === $this) {
+                $itemsCollection->setLibrary(null);
+            }
+        }
 
         return $this;
     }

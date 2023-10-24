@@ -21,9 +21,13 @@ class Category
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Library::class)]
     private Collection $library;
 
+    #[ORM\OneToMany(mappedBy: 'category', targetEntity: ItemsCollection::class)]
+    private Collection $items_collection;
+
     public function __construct()
     {
         $this->library = new ArrayCollection();
+        $this->items_collection = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -67,6 +71,36 @@ class Category
             // set the owning side to null (unless already changed)
             if ($library->getCategory() === $this) {
                 $library->setCategory(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ItemsCollection>
+     */
+    public function getItemsCollection(): Collection
+    {
+        return $this->items_collection;
+    }
+
+    public function addItemsCollection(ItemsCollection $itemsCollection): static
+    {
+        if (!$this->items_collection->contains($itemsCollection)) {
+            $this->items_collection->add($itemsCollection);
+            $itemsCollection->setCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeItemsCollection(ItemsCollection $itemsCollection): static
+    {
+        if ($this->items_collection->removeElement($itemsCollection)) {
+            // set the owning side to null (unless already changed)
+            if ($itemsCollection->getCategory() === $this) {
+                $itemsCollection->setCategory(null);
             }
         }
 

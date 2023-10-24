@@ -36,9 +36,19 @@ class ItemsCollection
     #[ORM\OneToMany(mappedBy: 'item�s_collectio', targetEntity: Borrow::class)]
     private Collection $borrows;
 
+    #[ORM\ManyToOne(inversedBy: 'items_collection')]
+    private ?Category $category = null;
+
+    #[ORM\ManyToOne(inversedBy: 'itemsCollections')]
+    private ?Library $library = null;
+
+    #[ORM\OneToMany(mappedBy: 'itemsCollection', targetEntity: Image::class)]
+    private Collection $image;
+
     public function __construct()
     {
         $this->borrows = new ArrayCollection();
+        $this->image = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -142,6 +152,60 @@ class ItemsCollection
             // set the owning side to null (unless already changed)
             if ($borrow->getItem�sCollectio() === $this) {
                 $borrow->setItem�sCollectio(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): static
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function getLibrary(): ?Library
+    {
+        return $this->library;
+    }
+
+    public function setLibrary(?Library $library): static
+    {
+        $this->library = $library;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Image>
+     */
+    public function getImage(): Collection
+    {
+        return $this->image;
+    }
+
+    public function addImage(Image $image): static
+    {
+        if (!$this->image->contains($image)) {
+            $this->image->add($image);
+            $image->setItemsCollection($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Image $image): static
+    {
+        if ($this->image->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getItemsCollection() === $this) {
+                $image->setItemsCollection(null);
             }
         }
 
