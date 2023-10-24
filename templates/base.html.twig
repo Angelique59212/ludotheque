@@ -13,6 +13,30 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+    <header class="bg-header h-32 text-white flex items-center fixed top-0 w-full z-50">
+        <div class="w-1/4">
+            <img class="w-36" src="{{ asset('build/img/logo.png') }}" alt="logo">
+        </div>
+        <h1 class="text-3xl font-bold text-center flex-1">ANGELIKA LIBRARY</h1>
+        <div class="w-1/4 text-right">
+            <a class="text-link mr-4" href="{{ path('app_register') }}">Inscription</a>
+            <a class="text-link mr-4" href="{{ path('app_login') }}">Connexion</a>
+        </div>
+    </header>
+        {% block body %}
+        {% endblock %}
+
+    <footer class="bg-footer h-20 absolute overflow-hidden left-0 right-0 bottom-0 text-white justify-between items-center flex w-full">
+        <div class="w-1/2 flex items-center">
+            <img class="w-36" src="{{ asset('build/img/logo_color.png') }}" alt="logo">
+            <span>© Angélique Dehainaut</span>
+        </div>
+        <div class="w-1/2 flex items-center justify-end">
+            <p>Politique de Confidentialité</p>
+            <img class="w-36" src="{{ asset('build/img/logo_color.png') }}" alt="logo">
+        </div>
+    </footer>
+
+
     </body>
 </html>

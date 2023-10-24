@@ -1,11 +1,101 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('carousel') }}
+{% endblock %}
 
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-    <header class="bg-header h-32 text-white flex justify-around items-center fixed top-0 w-full z-50">
-        <div>
-            <img src="{{ asset('build/img/logo_color.png') }}" alt="logo">
+    <main class="mt-32">
+        <div class="text-center">
+            <h1 class=" mt-36 text-h1Home text-h1 font-popp">Votre ludothèque online</h1>
+            <p class="my-4 text-textp text-pColor font-popp">Retrouvez toute votre bibliothèque au même endroit</p>
+            <p class="my-4 text-textp text-pColor font-popp">Livres, Jeux de société, Jeux Vidéos, Mangas</p>
         </div>
-    </header>
+
+        <div id="container-carousel" class="flex flex-wrap justify-around items-center">
+            <div class="w-1/3 mt-12">
+                <div class=" ml-32 overflow-hidden swiper-container mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="{{ asset('build/img/book1.jpeg') }}" alt="book"/>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="{{ asset('build/img/book2.jpeg') }}" alt="book"/>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="{{ asset('build/img/book3.jpeg') }}" alt="book"/>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="{{ asset('build/img/book4.jpeg') }}" alt="book"/>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="overflow-hidden swiper-container mySwiper ">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('build/img/book1.jpeg') }}" alt="book"/>
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('build/img/book2.jpeg') }}" alt="book"/>
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('build/img/book3.jpeg') }}" alt="book"/>
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('build/img/book4.jpeg') }}" alt="book"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <img src="{{ asset('build/img/img_home.png') }}" alt="library">
+            </div>
+            <div class="w-1/3 mt-12">
+                <div class=" ml-44 overflow-hidden swiper-container mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="{{ asset('build/img/book1.jpeg') }}" alt="book"/>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="{{ asset('build/img/book2.jpeg') }}" alt="book"/>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="{{ asset('build/img/book3.jpeg') }}" alt="book"/>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="{{ asset('build/img/book4.jpeg') }}" alt="book"/>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <div class=" overflow-hidden swiper-container mySwiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('build/img/book1.jpeg') }}" alt="book"/>
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('build/img/book2.jpeg') }}" alt="book"/>
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('build/img/book3.jpeg') }}" alt="book"/>
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('build/img/book4.jpeg') }}" alt="book"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+    {{ encore_entry_script_tags('carousel') }}
 {% endblock %}
