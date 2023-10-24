@@ -14,6 +14,12 @@ Encore
     // only needed for CDN's or subdirectory deploy
     //.setManifestKeyPrefix('build/')
 
+    .copyFiles({
+        from: './assets/img',
+        to: 'img/[path][name].[ext]',
+        pattern: /\.(png|jpg|jpeg|webp)$/,
+    })
+
     /*
      * ENTRY CONFIG
      *

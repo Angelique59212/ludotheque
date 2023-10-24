@@ -49,7 +49,7 @@
   D’autres entités seront possibles voir nécessaire !
 
 **6. Livrables attendus :**
-- Repository GitHub.
+- _Repository GitHub._
 - Documentation complète comprenant le guide d'installation et le documentation PHP du projet.
-- MCD-MLD.
-- Maquette.
+- _MCD-MLD._
+- _Maquette._
