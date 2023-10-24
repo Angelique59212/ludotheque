@@ -17,6 +17,9 @@
 
     <main class="mt-32">
         <h1 class="text-h1Home text-h1 font-popp text-center mb-8">Ma Library</h1>
+        {% for library in libraries %}
+            {{ library.name }} - {{ library.category }}
+        {% endfor %}
     </main>
 
 {% endblock %}

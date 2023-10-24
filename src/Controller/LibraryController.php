@@ -17,7 +17,7 @@ class LibraryController extends AbstractController
     public function index( LibraryRepository $libraryRepository): Response
     {
         return $this->render('library/index.html.twig', [
-            'library'=> $libraryRepository->findAll(),
+            'libraries'=> $libraryRepository->findAll(),
         ]);
     }
 
