@@ -13,12 +13,12 @@
 - Faciliter le suivi des éléments empruntés pour une meilleure organisation.
 
 **3. Spécifications techniques :**
-- L'application sera développée en utilisant le framework Symfony pour garantir une structure
-  robuste et évolutive.
-- Tailwind CSS sera utilisé pour la conception de l'interface utilisateur, offrant une personnalisation
-  facile et des éléments visuels modernes.
-- La base de données sera conçue en mysql pour stocker les informations utilisateur, les détails de la
-  collection, ainsi que les informations d'emprunt et de retour.
+- _L'application sera développée en utilisant le framework Symfony pour garantir une structure
+  robuste et évolutive._
+- _Tailwind CSS sera utilisé pour la conception de l'interface utilisateur, offrant une personnalisation
+  facile et des éléments visuels modernes._
+- _La base de données sera conçue en mysql pour stocker les informations utilisateur, les détails de la
+  collection, ainsi que les informations d'emprunt et de retour._
   -Validations et vérifications pour tout formulaire.
 
 **4. Fonctionnalités clés :**
