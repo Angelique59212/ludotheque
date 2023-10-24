@@ -23,6 +23,12 @@ class Borrow
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $return_date = null;
 
+    #[ORM\ManyToOne(inversedBy: 'borrows')]
+    private ?User $user = null;
+
+    #[ORM\ManyToOne(inversedBy: 'borrows')]
+    private ?ItemsCollection $itemsCollection = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +66,30 @@ class Borrow
     public function setReturnDate(\DateTimeInterface $return_date): static
     {
         $this->return_date = $return_date;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getItemsCollection(): ?ItemsCollection
+    {
+        return $this->itemsCollection;
+    }
+
+    public function setItemsCollection(?ItemsCollection $itemsCollection): static
+    {
+        $this->itemsCollection = $itemsCollection;
 
         return $this;
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ItemsCollectionRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ItemsCollectionRepository::class)]
@@ -30,6 +32,14 @@ class ItemsCollection
 
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $language = null;
+
+    #[ORM\OneToMany(mappedBy: 'item√s_collectio', targetEntity: Borrow::class)]
+    private Collection $borrows;
+
+    public function __construct()
+    {
+        $this->borrows = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -104,6 +114,36 @@ class ItemsCollection
     public function setLanguage(?string $language): static
     {
         $this->language = $language;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Borrow>
+     */
+    public function getBorrows(): Collection
+    {
+        return $this->borrows;
+    }
+
+    public function addBorrow(Borrow $borrow): static
+    {
+        if (!$this->borrows->contains($borrow)) {
+            $this->borrows->add($borrow);
+            $borrow->setItem√sCollectio($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBorrow(Borrow $borrow): static
+    {
+        if ($this->borrows->removeElement($borrow)) {
+            // set the owning side to null (unless already changed)
+            if ($borrow->getItem√sCollectio() === $this) {
+                $borrow->setItem√sCollectio(null);
+            }
+        }
 
         return $this;
     }
