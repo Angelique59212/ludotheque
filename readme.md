@@ -22,21 +22,22 @@
   -Validations et vérifications pour tout formulaire.
 
 **4. Fonctionnalités clés :**
-- Authentification sécurisée des utilisateurs avec gestion de profils.
-- Gestion complète des collections de livres, jeux vidéo, mangas et jeux de société. (Création, ajout
-  d’éléments, modifications, suppressions d’éléments, suppression de la collection...)
+- __Authentification sécurisée des utilisateurs avec gestion de profils.__
+- __Gestion complète des collections de livres, jeux vidéo, mangas et jeux de société. (Création, ajout
+  d’éléments, modifications, suppressions d’éléments, suppression de la collection...)__
 - Suivi des emprunts et des retours.
-- Option d'ajout d'images pour chaque élément de la collection pour une meilleure visualisation
-  (fonctionnalité en option).5. Fonctionnalités de recherche avancée :
+- __Option d'ajout d'images pour chaque élément de la collection pour une meilleure visualisation
+  (fonctionnalité en option).__
+**5. Fonctionnalités de recherche avancée :**
 - Recherche par mots-clés pour trouver des éléments spécifiques dans la collection.
 - Recherche par nom de l'éditeur pour filtrer les éléments en fonction de leur source.
-- Recherche par date d'ajout pour accéder rapidement aux éléments récemment ajoutés à la
-  collection.
-- Recherche par date d’emprunts si l’emprunts n’est pas terminé.
-- Possibilité de filtrer les résultats de recherche en fonction de critères spécifiques tels que le type,
-  la catégorie (optionnelle)
+- Recherche par date d’emprunts si l’emprunt n’est pas terminé.
+- __Recherche par date d'ajout pour accéder rapidement aux éléments récemment ajoutés à la
+  collection.__
+- __Possibilité de filtrer les résultats de recherche en fonction de critères spécifiques tels que le type,
+  la catégorie (optionnelle)__
 
-**5. Entités clés :**
+**6. Entités clés :**
 - Utilisateur avec des informations de profil et d'authentification (date de naissance, pseudo...).
 - Collection incluant des catégories telles que livres, jeux vidéo, mangas et jeux de société.
 - Livre avec des détails tels que titre, auteur, éditeur, et autres métadonnées pertinentes.
@@ -48,7 +49,7 @@
   date d'échéance.
   D’autres entités seront possibles voir nécessaire !
 
-**6. Livrables attendus :**
+**7. Livrables attendus :**
 - _Repository GitHub._
 - Documentation complète comprenant le guide d'installation et le documentation PHP du projet.
 - _MCD-MLD._

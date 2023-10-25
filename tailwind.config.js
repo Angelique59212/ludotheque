@@ -14,6 +14,7 @@ module.exports = {
         'footer' : '#222222',
         'button': '#A6D7D7',
         'input': '#D9D9D9',
+        'delete': '#CD5C5CFF',
       },
       fontFamily: {
         'popp': ['Poppins', 'sans-serif'],

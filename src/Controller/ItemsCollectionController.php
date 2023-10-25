@@ -25,6 +25,9 @@ class ItemsCollectionController extends AbstractController
     #[Route('item/addItem', name: 'add_item', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $em): Response
     {
+        if (!$this->isGranted('ROLE_USER')) {
+            return $this->redirectToRoute('app_home');
+        }
         $item = new ItemsCollection();
         $form = $this->createForm(ItemsCollectionType::class, $item);
         $form->handleRequest($request);
