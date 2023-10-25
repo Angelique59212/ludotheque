@@ -1,0 +1,13 @@
+{% extends '../base.html.twig' %}
+
+{% block title %}Edit ItemsCollection{% endblock %}
+
+{% block body %}
+    <h1>Edit ItemsCollection</h1>
+
+    {{ include('items_collection/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_items_collection_index') }}">back to list</a>
+
+    {{ include('items_collection/_delete_form.html.twig') }}
+{% endblock %}
