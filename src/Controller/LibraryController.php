@@ -30,6 +30,7 @@ class LibraryController extends AbstractController
         $form = $this->createForm(LibraryType::class, $library);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $library->setName(strtoupper($library->getName()));
             $em->persist($library);
             $em->flush();
             return $this->redirectToRoute('add_library');
