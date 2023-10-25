@@ -4,8 +4,10 @@ namespace App\Controller;
 
 use App\Entity\ItemsCollection;
 use App\Form\ItemsCollectionType;
+use App\Form\SearchType;
 use App\Repository\ItemsCollectionRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use JetBrains\PhpStorm\NoReturn;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -45,13 +47,13 @@ class ItemsCollectionController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'show_items', methods: ['GET'])]
-    public function show(ItemsCollection $itemsCollection): Response
-    {
-        return $this->render('item/show.html.twig', [
-            'items_collection' => $itemsCollection,
-        ]);
-    }
+//    #[Route('/{id}', name: 'show_items', methods: ['GET'])]
+//    public function show(ItemsCollection $itemsCollection): Response
+//    {
+//        return $this->render('item/show.html.twig', [
+//            'items_collection' => $itemsCollection,
+//        ]);
+//    }
 
     #[Route('/{id}/edit', name: 'edit_item', methods: ['GET', 'POST'])]
     public function edit(Request $request, ItemsCollection $itemsCollection, EntityManagerInterface $em): Response
@@ -80,5 +82,35 @@ class ItemsCollectionController extends AbstractController
         }
 
         return $this->redirectToRoute('app_library', [], Response::HTTP_SEE_OTHER);
+    }
+
+ #[Route('/search', name: 'app_items_search', methods: ['GET'])]
+    public function search(Request $request, ItemsCollectionRepository $itemsCollectionRepository):Response
+    {
+        $param = $request->get('wordKey');
+        $search = $this->createForm(SearchType::class);
+
+        if ($param) {
+            $item = $itemsCollectionRepository->searchByWord($param, $this->getUser()->getId());
+        }else {
+            $item = [];
+        }
+        return $this->render('item/search.html.twig', [
+            'results'=>$item,
+            'search'=>$search,
+        ]);
+
+//        $search = $this->createForm(SearchType::class, $itemsCollectionRepository);
+//        $search->handleRequest($request);
+//
+//        $results = [];
+//        if ($search->isSubmitted() && $search->isValid()) {
+//            $wordKey = $search->get('wordKey')->getData();
+//            $results = $itemsCollectionRepository->searchByWord($wordKey);
+//        }
+//        return $this->render('item/search.html.twig', [
+//            'searchForm'=>$search->createView(),
+//            'results'=> $results,
+//        ]);
     }
 }

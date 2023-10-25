@@ -25,7 +25,7 @@
 - __Authentification sécurisée des utilisateurs avec gestion de profils.__
 - __Gestion complète des collections de livres, jeux vidéo, mangas et jeux de société. (Création, ajout
   d’éléments, modifications, suppressions d’éléments, suppression de la collection...)__
-- Suivi des emprunts et des retours.
+- __Suivi des emprunts et des retours.__
 - __Option d'ajout d'images pour chaque élément de la collection pour une meilleure visualisation
   (fonctionnalité en option).__
 **5. Fonctionnalités de recherche avancée :**

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Recherche</h1>
+
+    <form action="" method="GET">
+        <label for="wordKey">
+            <input type="text" name="wordKey" id="wordKey">
+        </label>
+        <input type="submit" value="Rechercher">
+    </form>
+
+    <h2>Resultats</h2>
+    {% for result in results %}
+        <p>{{ result.title }}</p>
+    {% endfor %}
+{% endblock %}

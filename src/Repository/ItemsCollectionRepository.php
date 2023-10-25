@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\ItemsCollection;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -19,6 +20,16 @@ class ItemsCollectionRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, ItemsCollection::class);
+    }
+
+    public function searchByWord($wordKey, int $id)
+    {
+        $query = $this->createQueryBuilder('itemC');
+        if (!empty($wordKey)) {
+            $query->andWhere('itemC.title LIKE :wordKey')
+                ->setParameter('wordKey', "%" . $wordKey . "%");
+        }
+            return $query->getQuery()->getResult();
     }
 
 //    /**
