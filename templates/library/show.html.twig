@@ -1,4 +1,4 @@
-{% extends '../base.html.twig' %}
+{% extends '/base.html.twig' %}
 
 {% block title %}Library{% endblock %}
 
@@ -18,9 +18,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_library_index') }}">back to list</a>
+    <a href="{{ path('app_library') }}">Revenir en arrière</a>
 
-    <a href="{{ path('app_library_edit', {'id': library.id}) }}">edit</a>
+    <a href="{{ path('edit_library', {'id': library.id}) }}">edit</a>
 
     {{ include('library/_delete_form.html.twig') }}
 {% endblock %}

@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('items/collection')]
 class ItemsCollectionController extends AbstractController
 {
-    #[Route('/item/collection', name: 'app_items', methods: ['GET'])]
+    #[Route('item/collection', name: 'app_items', methods: ['GET'])]
     public function index(ItemsCollectionRepository $itemsCollectionRepository): Response
     {
         return $this->render('item/index.html.twig', [
@@ -33,6 +33,7 @@ class ItemsCollectionController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $item->setUser($this->getUser());
             $em->persist($item);
             $em->flush();
 
@@ -47,12 +48,12 @@ class ItemsCollectionController extends AbstractController
     #[Route('/{id}', name: 'show_items', methods: ['GET'])]
     public function show(ItemsCollection $itemsCollection): Response
     {
-        return $this->render('items_collection/show.html.twig', [
+        return $this->render('item/show.html.twig', [
             'items_collection' => $itemsCollection,
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_items_collection_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/edit', name: 'edit_item', methods: ['GET', 'POST'])]
     public function edit(Request $request, ItemsCollection $itemsCollection, EntityManagerInterface $em): Response
     {
         $form = $this->createForm(ItemsCollectionType::class, $itemsCollection);
@@ -61,10 +62,10 @@ class ItemsCollectionController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em->flush();
 
-            return $this->redirectToRoute('app_items_collection_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_items', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('items_collection/edit.html.twig', [
+        return $this->render('item/edit.html.twig', [
             'items_collection' => $itemsCollection,
             'form' => $form,
         ]);
@@ -78,6 +79,6 @@ class ItemsCollectionController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_items_collection_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_library', [], Response::HTTP_SEE_OTHER);
     }
 }

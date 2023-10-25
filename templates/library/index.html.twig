@@ -20,7 +20,7 @@
     <h1 class="w-full text-h1Home text-h1 font-popp text-center mb-8">Bibliothèque</h1>
 
     {% for library in libraries %}
-        <div class="bg-form-gradient mx-auto w-1/4 p-4 mb-4 mr-4">
+        <div class="bg-form-gradient mx-auto w-1/4 p-4 mb-4 ml-4">
             <h2 class="text-h1 text-center mb-4">{{ library.name }}</h2>
             <p>Catégories: {{ library.category }}</p>
             <h3 class="font-bold text-center text-xl">Item</h3>
@@ -34,8 +34,14 @@
                     <p> Temps de jeu: {{ item.playingTime }} min</p>
                     <p>Langue: {{ item.language }}</p>
                     <p>Bibliothèque: {{ item.library }}</p>
+                    <a class="btn mr-2 px-4 bg-button text-black shadow shadow-black border border-black transform skewX(-12deg)" href="{{ path('edit_item', {'id': item.id}) }}">Éditer l'item</a>
+                    {{ include('item/_delete_form.html.twig') }}
                 </div>
             {% endfor %}
+            <div class="text-center mt-4">
+                <a class="btn mr-2 px-4 bg-button text-black shadow shadow-black border border-black transform skewX(-12deg)" href="{{ path('edit_library', {'id': library.id}) }}">Éditer la bibliothèque</a>
+                {{ include('library/_delete_form.html.twig') }}
+            </div>
         </div>
     {% endfor %}
 </section>

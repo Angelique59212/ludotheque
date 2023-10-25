@@ -45,6 +45,9 @@ class ItemsCollection
     #[ORM\OneToMany(mappedBy: 'itemsCollection', targetEntity: Image::class)]
     private Collection $image;
 
+    #[ORM\ManyToOne(inversedBy: 'item')]
+    private ?User $user = null;
+
     public function __construct()
     {
         $this->borrows = new ArrayCollection();
@@ -208,6 +211,18 @@ class ItemsCollection
                 $image->setItemsCollection(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }

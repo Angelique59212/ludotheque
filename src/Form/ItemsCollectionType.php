@@ -17,9 +17,9 @@ class ItemsCollectionType extends AbstractType
             ->add('title', TextType::class)
             ->add('author',TextType::class)
             ->add('editor',TextType::class)
-            ->add('number_player',NumberType::class)
-            ->add('playing_time', NumberType::class)
-            ->add('language', TextType::class)
+            ->add('number_player')
+            ->add('playing_time')
+            ->add('language')
             ->add('category')
             ->add('library')
         ;

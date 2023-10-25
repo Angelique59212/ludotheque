@@ -40,10 +40,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Library::class, orphanRemoval: true)]
     private Collection $library;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: ItemsCollection::class)]
+    private Collection $item;
+
     public function __construct()
     {
         $this->borrows = new ArrayCollection();
         $this->library = new ArrayCollection();
+        $this->item = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -190,5 +194,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __toString() {
         return $this->email;
+    }
+
+    /**
+     * @return Collection<int, ItemsCollection>
+     */
+    public function getItem(): Collection
+    {
+        return $this->item;
+    }
+
+    public function addItem(ItemsCollection $item): static
+    {
+        if (!$this->item->contains($item)) {
+            $this->item->add($item);
+            $item->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeItem(ItemsCollection $item): static
+    {
+        if ($this->item->removeElement($item)) {
+            // set the owning side to null (unless already changed)
+            if ($item->getUser() === $this) {
+                $item->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }
