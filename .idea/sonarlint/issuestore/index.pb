@@ -59,3 +59,15 @@ N
 templates/home/index.html.twig,9/e/9edb3d1e95dfc79e011bc28bcd374833bdbae38a
 H
 templates/base.html.twig,f/f/ffb3f1cfd73fdec1f0c80c63d0b5bbc1fff22022
+J
+assets/styles/carousel.css,c/7/c7d080850345726838df56c3f615060c1c676eb6
+B
+assets/carousel.js,3/3/33743bf43ca4cf3d4b47823c2363c4c5614f7ba1
+Q
+!templates/library/index.html.twig,6/e/6eaf5777c167ec5d3b60e332189381baefaf5347
+O
+templates/library/add.html.twig,3/b/3ba9e3bf300458445bc5024a5f83d2e10519342f
+H
+src/Form/LibraryType.php,3/c/3c850f467516f3c9dfb3408d6afc745ef7c341ae
+T
+$src/Controller/LibraryController.php,8/f/8f14f5cd35929dbc86def172d2cdd7b108c4f4cc

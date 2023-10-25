@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\ItemsCollection;
 use App\Entity\Library;
+use App\Form\ItemCollectionType;
 use App\Form\LibraryType;
 use App\Repository\LibraryRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -36,4 +38,17 @@ class LibraryController extends AbstractController
             'form_add_library' =>$form->createView(),
         ]);
     }
+
+    #[Route('library/delete', name: 'delete_library', methods: 'DELETE')]
+    public function deleteLibrary(int $id, LibraryRepository $libraryRepository, EntityManagerInterface $em): Response
+    {
+        $library = $libraryRepository->find($id);
+        if ($library) {
+            $em->remove($library);
+            $em->flush();
+            return $this->redirectToRoute('add_library');
+        }
+        return $this->render('library/app_library');
+    }
+
 }

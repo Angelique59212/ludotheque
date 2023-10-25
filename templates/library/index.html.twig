@@ -18,7 +18,20 @@
     <main class="mt-32">
         <h1 class="text-h1Home text-h1 font-popp text-center mb-8">Ma Library</h1>
         {% for library in libraries %}
-            {{ library.name }} - {{ library.category }}
+            <h2>{{ library.name }}</h2>
+            <p>{{ library.category }}</p>
+            <h3>Items:</h3>
+                {% for item in library.getItemsCollections %}
+                    <h2>{{ item.title }}</h2>
+                    <p>{{ item.author }}</p>
+                    <p>{{ item.editor }}</p>
+                    <p>{{ item.numberPlayer }}</p>
+                    <p>{{ item.playingTime }}</p>
+                    <p>{{ item.language }}</p>
+                    <p>{{ item.category }}</p>
+                    <p>{{ item.library }}</p>
+                {% endfor %}
+
         {% endfor %}
     </main>
 

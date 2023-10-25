@@ -140,7 +140,7 @@ class ItemsCollection
     {
         if (!$this->borrows->contains($borrow)) {
             $this->borrows->add($borrow);
-            $borrow->setItem�sCollectio($this);
+            $borrow->setItemsCollection($this);
         }
 
         return $this;
@@ -150,8 +150,8 @@ class ItemsCollection
     {
         if ($this->borrows->removeElement($borrow)) {
             // set the owning side to null (unless already changed)
-            if ($borrow->getItem�sCollectio() === $this) {
-                $borrow->setItem�sCollectio(null);
+            if ($borrow->getItemsCollection() === $this) {
+                $borrow->setItemsCollection(null);
             }
         }
 
@@ -211,4 +211,5 @@ class ItemsCollection
 
         return $this;
     }
+
 }
