@@ -93,4 +93,8 @@ class Borrow
 
         return $this;
     }
+
+    public function __toString() {
+        return $this->date_start->format('Y-m-d');
+    }
 }
