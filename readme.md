@@ -29,8 +29,8 @@
 - __Option d'ajout d'images pour chaque élément de la collection pour une meilleure visualisation
   (fonctionnalité en option).__
 **5. Fonctionnalités de recherche avancée :**
-- Recherche par mots-clés pour trouver des éléments spécifiques dans la collection.
-- Recherche par nom de l'éditeur pour filtrer les éléments en fonction de leur source.
+- __Recherche par mots-clés pour trouver des éléments spécifiques dans la collection.__
+- __Recherche par nom de l'éditeur pour filtrer les éléments en fonction de leur source.__
 - Recherche par date d’emprunts si l’emprunt n’est pas terminé.
 - __Recherche par date d'ajout pour accéder rapidement aux éléments récemment ajoutés à la
   collection.__

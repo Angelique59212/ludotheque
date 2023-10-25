@@ -97,4 +97,18 @@ class ItemsCollectionController extends AbstractController
             'results'=>$item,
         ]);
     }
+    #[Route('/searchByEditor', name: 'app_items_search_editor', methods: ['GET'])]
+    public function searchByEditor(Request $request, ItemsCollectionRepository $itemsCollectionRepository):Response
+    {
+        $param = $request->get('wordKey');
+        if ($param) {
+            $item = $itemsCollectionRepository->searchByWord($param, $this->getUser()->getId());
+        }else {
+            $item = [];
+        }
+        return $this->render('item/search.html.twig', [
+            'results'=>$item,
+        ]);
+    }
+
 }

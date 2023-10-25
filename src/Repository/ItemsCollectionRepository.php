@@ -32,6 +32,16 @@ class ItemsCollectionRepository extends ServiceEntityRepository
             return $query->getQuery()->getResult();
     }
 
+    public function searchByEditor($wordKey, int $id)
+    {
+        $query = $this->createQueryBuilder('itemC');
+        if (!empty($wordKey)) {
+            $query->andWhere('itemC.editor LIKE :wordKey')
+                ->setParameter('wordKey', "%" . $wordKey . "%");
+        }
+        return $query->getQuery()->getResult();
+    }
+
 //    /**
 //     * @return ItemsCollection[] Returns an array of ItemsCollection objects
 //     */
