@@ -88,8 +88,6 @@ class ItemsCollectionController extends AbstractController
     public function search(Request $request, ItemsCollectionRepository $itemsCollectionRepository):Response
     {
         $param = $request->get('wordKey');
-        $search = $this->createForm(SearchType::class);
-
         if ($param) {
             $item = $itemsCollectionRepository->searchByWord($param, $this->getUser()->getId());
         }else {
@@ -97,20 +95,6 @@ class ItemsCollectionController extends AbstractController
         }
         return $this->render('item/search.html.twig', [
             'results'=>$item,
-            'search'=>$search,
         ]);
-
-//        $search = $this->createForm(SearchType::class, $itemsCollectionRepository);
-//        $search->handleRequest($request);
-//
-//        $results = [];
-//        if ($search->isSubmitted() && $search->isValid()) {
-//            $wordKey = $search->get('wordKey')->getData();
-//            $results = $itemsCollectionRepository->searchByWord($wordKey);
-//        }
-//        return $this->render('item/search.html.twig', [
-//            'searchForm'=>$search->createView(),
-//            'results'=> $results,
-//        ]);
     }
 }
