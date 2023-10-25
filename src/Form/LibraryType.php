@@ -14,7 +14,6 @@ class LibraryType extends AbstractType
     {
         $builder
             ->add('name', TextType::class)
-            ->add('user')
             ->add('category')
         ;
     }

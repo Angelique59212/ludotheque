@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/library')]
 class LibraryController extends AbstractController
 {
-    #[Route('/library', name: 'app_library', methods: ['GET'])]
+    #[Route('/', name: 'app_library', methods: ['GET'])]
     public function index(LibraryRepository $libraryRepository): Response
     {
         return $this->render('library/index.html.twig', [
@@ -22,15 +22,20 @@ class LibraryController extends AbstractController
         ]);
     }
 
-    #[Route('library/add', name: 'add_library', methods: ['GET', 'POST'])]
+    #[Route('/add', name: 'add_library', methods: ['GET', 'POST'])]
     public function add(Request $request, EntityManagerInterface $em): Response
     {
+        if (!$this->isGranted('ROLE_USER')) {
+            return $this->redirectToRoute('app_home');
+        }
+
         $library = new Library();
         $form = $this->createForm(LibraryType::class, $library);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $library->setName(strtoupper($library->getName()));
+            $library->setUser($this->getUser());
             $em->persist($library);
             $em->flush();
 
