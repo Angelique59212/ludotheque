@@ -4,10 +4,8 @@ namespace App\Controller;
 
 use App\Entity\ItemsCollection;
 use App\Form\ItemsCollectionType;
-use App\Form\SearchType;
 use App\Repository\ItemsCollectionRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use JetBrains\PhpStorm\NoReturn;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -102,11 +100,11 @@ class ItemsCollectionController extends AbstractController
     {
         $param = $request->get('wordKey');
         if ($param) {
-            $item = $itemsCollectionRepository->searchByWord($param, $this->getUser()->getId());
+            $item = $itemsCollectionRepository->searchByEditor($param, $this->getUser()->getId());
         }else {
             $item = [];
         }
-        return $this->render('item/search.html.twig', [
+        return $this->render('item/searchByEditor.html.twig', [
             'results'=>$item,
         ]);
     }

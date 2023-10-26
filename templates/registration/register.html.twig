@@ -19,7 +19,7 @@
             <div class="w-1/3 mb-4 mx-auto">
                 <img src="{{ asset('build/img/register.png') }}" alt="library" class="w-64 h-auto mb-4 mx-auto">
             </div>
-            <div class="w-1/3 ml-4 mx-auto">
+            <div class="w-1/2 ml-4 mx-auto">
                 <div class="pl-4">
                     {{ form_errors(registrationForm) }}
                     {{ form_start(registrationForm) }}
@@ -52,7 +52,7 @@
                             </div>
 
                             <div class="mb-4 flex flex-row items-center">
-                                {{ form_label(registrationForm.plainPassword, 'Password', {
+                                {{ form_label(registrationForm.plainPassword, 'Mot de passe', {
                                     'label_attr': {
                                         'class': 'w-1/2'
                                     }})

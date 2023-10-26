@@ -34,12 +34,12 @@
                     <p> Temps de jeu: {{ item.playingTime }} min</p>
                     <p>Langue: {{ item.language }}</p>
                     <p>Bibliothèque: {{ item.library }}</p>
-                    <a class="btn mr-2 px-4 bg-button text-black shadow shadow-black border border-black transform skewX(-12deg)" href="{{ path('edit_item', {'id': item.id}) }}">DONT TOUCH !!!!Éditer l'item</a>
+                    <a class="btn my-2 mr-2 px-4 bg-button text-black shadow shadow-black border border-black transform skewX(-12deg)" href="{{ path('edit_item', {'id': item.id}) }}">DONT TOUCH !!!!Éditer l'item</a>
                     {{ include('item/_delete_form.html.twig') }}
                 </div>
             {% endfor %}
             <div class="text-center mt-4">
-                <a class="btn mr-2 px-4 bg-button text-black shadow shadow-black border border-black transform skewX(-12deg)" href="{{ path('edit_library', {'id': library.id}) }}">Éditer la bibliothèque</a>
+                <a class="btn my-2 mr-2 px-4 bg-button text-black shadow shadow-black border border-black transform skewX(-12deg)" href="{{ path('edit_library', {'id': library.id}) }}">Éditer la bibliothèque</a>
                 {{ include('library/_delete_form.html.twig') }}
             </div>
         </div>

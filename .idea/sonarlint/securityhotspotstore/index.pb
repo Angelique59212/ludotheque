@@ -81,3 +81,9 @@ N
 templates/item/index.html.twig,1/c/1c39871cea8eb8151e1b1db560831b3d1787d396
 P
  templates/item/addItem.html.twig,b/2/b2b020d278422a0de0cea645434518949e04a1c1
+N
+config/packages/messenger.yaml,e/2/e2f75a24c079770b5bd1960dfe1df2ae4443e4a3
+R
+"templates/emails/contact.html.twig,a/b/ab655ddf78be8b1a9b3b09346963a2e1f7555fd6
+M
+src/Service/MailerService.php,6/1/61383e064d21f9ed53b8dab21d7ce1f7de1e6cea
