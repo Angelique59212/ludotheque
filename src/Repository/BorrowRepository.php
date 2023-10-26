@@ -21,6 +21,25 @@ class BorrowRepository extends ServiceEntityRepository
         parent::__construct($registry, Borrow::class);
     }
 
+    public function findBorrowNoFinished($dateStart, $dateEnd, $userId)
+    {
+        $query = $this->createQueryBuilder('b')
+            ->where('b.user = :user_id')
+            ->setParameter('user_id', $userId);
+
+        if ($dateStart) {
+            $query->andWhere('b.date_start >= :date_start')
+                ->setParameter('date_start', $dateStart);
+        }
+
+        if ($dateEnd) {
+            $query->andWhere('b.date_end <= :date_end')
+                ->setParameter('date_end', $dateEnd);
+        }
+
+        return $query->getQuery()->getResult();
+    }
+
 //    /**
 //     * @return Borrow[] Returns an array of Borrow objects
 //     */

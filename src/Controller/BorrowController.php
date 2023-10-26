@@ -79,4 +79,23 @@ class BorrowController extends AbstractController
 
         return $this->redirectToRoute('app_borrow_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    #[Route('/search/borrow', name: 'app_search_borrow', methods: ['GET', 'POST'])]
+    public function search(Request $request, BorrowRepository $borrowRepository): Response
+    {
+
+        if ($request->isMethod('GET')) {
+            $startDate = $request->query->get('date_start');
+            $endDate = $request->query->get('date_end');
+
+            if ($startDate && $endDate) {
+                $borrows = $borrowRepository->findBorrowNoFinished($startDate, $endDate, $this->getUser()->getId());
+            } else {
+                $borrows = [];
+            }
+        }
+        return $this->render('borrow/search.html.twig', [
+            'borrows'=>$borrows
+        ]);
+    }
 }

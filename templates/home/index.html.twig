@@ -22,6 +22,7 @@
                 <a class="text-link mr-4" href="{{ path('add_item') }}">Ajouter article</a>
                 <a class="text-link mr-4" href="{{ path('add_library') }}">Ajouter Library</a>
                 <a class="text-link mr-4" href="{{ path('app_library') }}">Library</a>
+                <a class="text-link mr-4" href="{{ path('app_borrow_index') }}">Emprunts</a>
                 <a class="text-link mr-4" href="{{ path('app_category_index') }}">Catégories</a>
                 <a class="text-link mr-4" href="{{ path('app_logout') }}">Déconnexion</a>
                 <div>
@@ -31,6 +32,7 @@
                             <option value="" disabled selected>Sélectionnez une option</option>
                             <option class="bg-button" value="{{ path('app_items_search') }}">Recherche par mots-clés</option>
                             <option class="bg-button" value="{{ path('app_items_search_editor') }}">Recherche par éditeur</option>
+                            <option class="bg-button" value="{{ path('app_search_borrow') }}">Recherche par date d'emprunt non terminé</option>
                         </select>
                     </form>
                 </div>

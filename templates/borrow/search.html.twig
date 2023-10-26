@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recherche d'emprunts{% endblock %}
+
+{% block body %}
+    <h1>Recherche d'emprunts non terminés</h1>
+
+    <form action="{{ path('app_search_borrow') }}" method='GET'>
+        <label for="date_start">Date de début :</label>
+            <input type="date" name="date_start" id="date_start">
+
+        <label for="date_end">Date de fin :</label>
+        <input type="date" name="date_end" id="date_end">
+
+        <button type="submit">Rechercher</button>
+    </form>
+
+    {% if borrows %}
+    {% for borrow in borrows %}
+        <tr>
+            <td>Date de début:{{ borrow.dateStart ? borrow.dateStart|date('Y-m-d') : '' }}</td>
+            <td>Date de fin:{{ borrow.dateEnd ? borrow.dateEnd|date('Y-m-d') : '' }}</td>
+            <td>Nom de l'item emprunté:{{ borrow.itemsCollection.title }}</td>
+            <td>
+                <a href="{{ path('app_borrow_show', {'id': borrow.id}) }}">show</a>
+                <a href="{{ path('app_borrow_edit', {'id': borrow.id}) }}">edit</a>
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="5">no records found</td>
+        </tr>
+    {% endfor %}
+    {% endif %}
+{% endblock %}
