@@ -1,11 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Borrow{% endblock %}
+{% block title %}Ajouter un emprunt{% endblock %}
 
 {% block body %}
-    <h1>Create new Borrow</h1>
+    <header class="bg-header h-32 text-white flex items-center fixed top-0 w-full z-50">
+        <div class="w-1/4">
+            <img class="w-36" src="{{ asset('build/img/logo.png') }}" alt="logo">
+        </div>
+        <h1 class="text-3xl font-bold text-center flex-1">ANGELIKA LIBRARY</h1>
+        <div class="w-1/2 text-right">
+            <a class="text-link mr-4" href="{{ path('app_home') }}">Accueil</a>
+            <a class="text-link mr-4" href="{{ path('add_item') }}">Ajouter article</a>
+            <a class="text-link mr-4" href="{{ path('add_library') }}">Ajouter une librairie</a>
+            <a class="text-link mr-4" href="{{ path('app_category_index') }}">Catégories</a>
+            <a class="text-link mr-4" href="{{ path('app_library') }}">Library</a>
+        </div>
+    </header>
 
-    {{ include('borrow/_form.html.twig') }}
+    <section class="mt-32 flex flex-wrap px-4">
+        <h1 class="w-full text-h1Home text-h1 font-popp text-center mb-8">Créer un emprunt</h1>
+        <div class="bg-form-gradient mx-auto w-1/4  my-4 p-4 mb-4 rounded">
+            <div class="flex items-center my-4">
+                {{ include('borrow/_form.html.twig') }}
+            </div>
+            <a href="{{ path('app_borrow_index') }}">Revenir à la liste des emprunts</a>
+        </div>
+    </section>
 
-    <a href="{{ path('app_borrow_index') }}">back to list</a>
 {% endblock %}

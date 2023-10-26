@@ -19,14 +19,12 @@
 
     <section class="mt-32">
         <h1 class="w-full text-h1Home text-h1 font-popp text-center mb-8">Modifier l'emprunt</h1>
-        <div class="bg-form-gradient text-center w-1/2">
+        <div class="bg-form-gradient mx-auto text-center w-1/2 rounded">
             <div class=" ">
             {{ include('borrow/_form.html.twig', {'button_label': 'Modifier'}) }}
             {{ include('borrow/_delete_form.html.twig') }}
             </div>
             <a href="{{ path('app_borrow_index') }}" class="mr-4">Revenir à la liste</a>
-
-
         </div>
     </section>
 {% endblock %}

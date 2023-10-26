@@ -14,6 +14,7 @@
             <a class="text-link mr-4" href="{{ path('app_library') }}">Library</a>
         </div>
     </header>
+
     <main class="mt-32">
         <h1 class="text-h1Home text-h1 font-popp text-center mb-8">Ajouter une library</h1>
         <div class="my-32">
@@ -24,7 +25,7 @@
                     <div class="bg-form-gradient p-4">
                         <div class="font-popp">
                             <div class="mb-4 flex flex-row items-center">
-                                {{ form_label(form_add_library.name, 'Library Name', {
+                                {{ form_label(form_add_library.name, 'Nom', {
                                     'label_attr': {
                                         'class': 'w-1/2'
                                     }})
@@ -37,7 +38,7 @@
                             </div>
 
                             <div class="mb-4 flex flex-row items-center">
-                                {{ form_label(form_add_library.category, 'Library Category', {
+                                {{ form_label(form_add_library.category, 'Catégorie', {
                                     'label_attr': {
                                         'class': 'w-1/2'
                                     }})
@@ -61,4 +62,5 @@
             </div>
         </div>
     </main>
+
 {% endblock %}

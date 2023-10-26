@@ -1,40 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Borrow index{% endblock %}
+{% block title %}Emprunts{% endblock %}
 
 {% block body %}
+    <header class="bg-header h-32 text-white flex items-center fixed top-0 w-full z-50">
+        <div class="w-1/4">
+            <img class="w-36" src="{{ asset('build/img/logo.png') }}" alt="logo">
+        </div>
+        <h1 class="text-3xl font-bold text-center flex-1">ANGELIKA LIBRARY</h1>
+        <div class="w-1/2 text-right">
+            <a class="text-link mr-4" href="{{ path('app_home') }}">Accueil</a>
+            <a class="text-link mr-4" href="{{ path('app_borrow_new') }}">Créer un nouvel emprunt</a>
+            <a class="text-link mr-4" href="{{ path('add_item') }}">Ajouter article</a>
+            <a class="text-link mr-4" href="{{ path('add_library') }}">Ajouter une librairie</a>
+            <a class="text-link mr-4" href="{{ path('app_library') }}">Library</a>
+            <a class="text-link mr-4" href="{{ path('app_category_new') }}">Ajouter une Categorie</a>
+            <a class="text-link mr-4" href="{{ path('app_category_index') }}">Catégories</a>
+        </div>
+    </header>
 
-    <h2>Liste des emprunts :</h2>
-    <div id="all-borrows">
-        <table>
-            <thead>
-            <tr>
-                <th>Date de début</th>
-                <th>Date de fin</th>
-                <th>Date de retour</th>
-                <th>Item</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for borrow in borrows %}
-                <tr>
-                    <td>{{ borrow.dateStart ? borrow.dateStart|date('Y-m-d') : '' }}</td>
-                    <td>{{ borrow.dateEnd ? borrow.dateEnd|date('Y-m-d') : '' }}</td>
-                    <td>{{ borrow.returnDate ? borrow.returnDate|date('Y-m-d') : '' }}</td>
-                    <td>{{ borrow.itemsCollection.title }}</td>
-                    <td>
-                        <a href="{{ path('app_borrow_show', {'id': borrow.id}) }}">show</a>
-                        <a href="{{ path('app_borrow_edit', {'id': borrow.id}) }}">edit</a>
-                    </td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td colspan="5">no records found</td>
-                </tr>
+    <section class="mt-32">
+        <h1 class="w-full text-h1Home text-h1 font-popp text-center mb-8">Liste des emprunts</h1>
+
+        {% for borrow in borrows %}
+                <div  class="bg-form-gradient  mx-auto w-1/4 p-4 mb-8 rounded">
+                    <p><span class="text-center font-semibold m-2">Date de début:</span>{{ borrow.dateStart ? borrow.dateStart|date('Y-m-d') : '' }}</p>
+                    <p><span class="text-center font-semibold m-2">Date de fin:</span>{{ borrow.dateEnd ? borrow.dateEnd|date('Y-m-d') : '' }}</p>
+                    <p><span class="text-center font-semibold m-2">Date de retour:</span>{{ borrow.returnDate ? borrow.returnDate|date('Y-m-d') : '' }}</p>
+                    <p><span class="text-center font-semibold m-2">Titre de l'item:</span>{{ borrow.itemsCollection.title }}</p>
+                    <p>
+                        <a class=" btn mr-2 px-4 bg-button text-black shadow shadow-black" href="{{ path('app_borrow_show', {'id': borrow.id}) }}">Voir</a>
+                        <a class=" btn mr-2 px-4 bg-button text-black shadow shadow-black" href="{{ path('app_borrow_edit', {'id': borrow.id}) }}">Modifier</a>
+                    </p>
+                </div>
             {% endfor %}
-            </tbody>
-        </table>
-    </div>
-
-    <a href="{{ path('app_borrow_new') }}">Create new</a>
+    </section>
 {% endblock %}

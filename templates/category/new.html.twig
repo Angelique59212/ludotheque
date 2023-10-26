@@ -19,12 +19,11 @@
 
     <section class="mt-32 flex flex-wrap px-4">
         <h1 class="w-full text-h1Home text-h1 font-popp text-center mb-8">Créer une nouvelle Catégorie</h1>
-        <div class="bg-form-gradient mx-auto w-1/4  my-4 p-4 mb-4">
-            <div  class="flex items-center my-4">
+        <div class="bg-form-gradient mx-auto w-1/4  my-4 p-4 mb-4 rounded">
+            <div class="flex items-center my-4">
                 {{ include('category/_form.html.twig') }}
-                <a href="{{ path('app_category_index') }}">Revenir en arrière</a>
             </div>
-
+            <a href="{{ path('app_category_index') }}">Revenir en arrière</a>
         </div>
     </section>
 {% endblock %}

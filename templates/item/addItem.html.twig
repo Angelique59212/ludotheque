@@ -14,6 +14,7 @@
             <a class="text-link mr-4" href="{{ path('app_library') }}">Library</a>
         </div>
     </header>
+
     <main class="mt-32">
         <h1 class="text-h1Home text-h1 font-popp text-center mb-8">Ajouter des articles à votre collection</h1>
         <div class="my-32">
@@ -21,7 +22,7 @@
                 <div class="pl-4">
                     {{ form_errors(form_add_item) }}
                     {{ form_start(form_add_item) }}
-                    <div class="bg-form-gradient p-4">
+                    <div class="bg-form-gradient p-4 rounded">
                         <div class="font-popp">
                             <div class="mb-4 flex flex-row items-center">
                                 {{ form_label(form_add_item.title, 'Titre', {

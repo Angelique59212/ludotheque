@@ -13,6 +13,7 @@
             <a class="text-link mr-4" href="{{ path('app_login') }}">Connexion</a>
         </div>
     </header>
+
     <main class="mt-32">
         <h1 class="text-h1Home text-h1 font-popp text-center mb-8">Inscription</h1>
         <div class="flex flex-col sm:flex-row items-center mx-auto">
@@ -23,7 +24,7 @@
                 <div class="pl-4">
                     {{ form_errors(registrationForm) }}
                     {{ form_start(registrationForm) }}
-                    <div class="bg-form-gradient p-4">
+                    <div class="bg-form-gradient p-4 rounded">
                         <div class="font-popp">
                             <div class="mb-4 flex flex-row items-center">
                                 {{ form_label(registrationForm.email, null, {
@@ -85,4 +86,5 @@
             </div>
         </div>
     </main>
+
 {% endblock %}

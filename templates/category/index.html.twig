@@ -20,16 +20,13 @@
             <h1 class="w-full text-h1Home text-h1 font-popp text-center mb-8">Catégories</h1>
 
             {% for category in categories %}
-                <div class="bg-form-gradient mx-auto w-1/4 p-4 mb-4 ">
+                <div class="bg-form-gradient mx-auto w-1/4 p-4 mb-4 rounded">
                     <p class="text-center m-2">{{ category.type }}</p>
                     <div class="mb-4 flex items-center">
-                        <a class=" btn mr-2 px-4 bg-button text-black shadow shadow-black border border-black transform -skew-x-12" href="{{ path('app_category_edit', {'id': category.id}) }}">edit</a>
+                        <a class=" btn mr-2 px-4 bg-button text-black shadow shadow-black border border-black transform -skew-x-12" href="{{ path('app_category_edit', {'id': category.id}) }}">Modifier</a>
                         {{ include('category/_delete_form.html.twig') }}
                     </div>
                 </div>
-            {% else %}
-
-                <td colspan="3">no records found</td>
             {% endfor %}
         </section>
 

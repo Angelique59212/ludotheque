@@ -18,17 +18,12 @@
     </header>
     <section class="mt-32 flex flex-wrap px-4">
         <h1 class="w-full text-h1Home text-h1 font-popp text-center mb-8">Modifier la catégorie</h1>
-        <div class="bg-form-gradient mx-auto w-1/4 p-4 mb-4 ">
+        <div class="bg-form-gradient mx-auto w-1/4 p-4 mb-4 rounded">
             <div class="text-center">
                 {{ include('category/_form.html.twig', {'button_label': 'Modifier'}) }}
-            </div>
-
-            <div class="flex justify-between">
-                <a href="{{ path('app_category_index') }}">Revenir à la liste</a>
                 {{ include('category/_delete_form.html.twig') }}
             </div>
-
-
+                <a href="{{ path('app_category_index') }}">Revenir à la liste</a>
         </div>
     </section>
 {% endblock %}
