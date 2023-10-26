@@ -28,6 +28,7 @@
 - __Suivi des emprunts et des retours.__
 - __Option d'ajout d'images pour chaque élément de la collection pour une meilleure visualisation
   (fonctionnalité en option).__
+
 **5. Fonctionnalités de recherche avancée :**
 - __Recherche par mots-clés pour trouver des éléments spécifiques dans la collection.__
 - __Recherche par nom de l'éditeur pour filtrer les éléments en fonction de leur source.__
