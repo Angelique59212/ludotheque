@@ -70,6 +70,6 @@
 
 **7. Livrables attendus :**
 - _Repository GitHub._
-- Documentation complète comprenant le guide d'installation et le documentation PHP du projet.
+- _Documentation complète comprenant le guide d'installation et la documentation PHP du projet._
 - _MCD-MLD._
 - _Maquette._

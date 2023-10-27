@@ -48,6 +48,7 @@ class ItemsCollectionController extends AbstractController
             $em->persist($item);
             $em->flush();
 
+            $this->addFlash('success', "Ajout effectué avec succès");
             return $this->redirectToRoute('app_library', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -77,6 +78,7 @@ class ItemsCollectionController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em->flush();
 
+            $this->addFlash('success', "Modification effectué avec succès");
             return $this->redirectToRoute('app_items', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -98,7 +100,7 @@ class ItemsCollectionController extends AbstractController
             $entityManager->remove($itemsCollection);
             $entityManager->flush();
         }
-
+        $this->addFlash('success', "Suppression effectué avec succès");
         return $this->redirectToRoute('app_library', [], Response::HTTP_SEE_OTHER);
     }
 

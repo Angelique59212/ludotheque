@@ -33,9 +33,9 @@ class BorrowController extends AbstractController
     /*
      *function to add a borrow
      *request to retrieve the data submitted by the form
-     * the EntityManager to be able to persist the data
-     * create new instance borrow
-     * the response will return the form creation page
+     *the EntityManager to be able to persist the data
+     *create new instance borrow
+     *the response will return the form creation page
      */
     #[Route('/new', name: 'app_borrow_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
@@ -49,6 +49,7 @@ class BorrowController extends AbstractController
             $entityManager->persist($borrow);
             $entityManager->flush();
 
+            $this->addFlash('success', "Ajout d'emprunt effectué avec succès");
             return $this->redirectToRoute('app_borrow_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -82,6 +83,8 @@ class BorrowController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
+            $this->addFlash('success', "Modification effectué avec succès");
+
             return $this->redirectToRoute('app_borrow_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -102,6 +105,8 @@ class BorrowController extends AbstractController
             $entityManager->remove($borrow);
             $entityManager->flush();
         }
+
+        $this->addFlash('success', "Suppression effectué avec succès");
 
         return $this->redirectToRoute('app_borrow_index', [], Response::HTTP_SEE_OTHER);
     }

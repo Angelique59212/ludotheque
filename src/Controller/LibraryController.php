@@ -51,6 +51,7 @@ class LibraryController extends AbstractController
             $em->persist($library);
             $em->flush();
 
+            $this->addFlash('success', "Ajout effectué avec succès");
             return $this->redirectToRoute('app_library', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -81,8 +82,10 @@ class LibraryController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $library->setName(strtoupper($library->getName()));
             $entityManager->flush();
 
+            $this->addFlash('success', "Modification effectué avec succès");
             return $this->redirectToRoute('app_library', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -103,7 +106,7 @@ class LibraryController extends AbstractController
             $entityManager->remove($library);
             $entityManager->flush();
         }
-
+        $this->addFlash('success', "Suppression effectué avec succès");
         return $this->redirectToRoute('app_library', [], Response::HTTP_SEE_OTHER);
     }
 }

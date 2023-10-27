@@ -8,6 +8,25 @@
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.scss';
 
+document.addEventListener("DOMContentLoaded", () =>{
+    let message = document.querySelector("#message");
+    let delay = 3000;
+    setTimeout(() => {
+        if (message) {
+            message.remove();
+        }
+    }, delay);
+});
+
+if (message) {
+    message.addEventListener("click", function() {
+        message.remove();
+    });
+}
+
+
+
+
 
 
 
