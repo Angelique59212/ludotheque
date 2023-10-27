@@ -21,6 +21,11 @@ class BorrowRepository extends ServiceEntityRepository
         parent::__construct($registry, Borrow::class);
     }
 
+    /*
+     * query to retrieve loans taking into account start end date and user
+     * using the queryBuilder to communicate with the database
+     * returns an array of borrowing objects
+     */
     public function findBorrowNoFinished($dateStart, $dateEnd, $userId)
     {
         $query = $this->createQueryBuilder('b')

@@ -11,9 +11,17 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ *
+ */
 #[Route('/borrow')]
 class BorrowController extends AbstractController
 {
+    /*
+     *function to have all the borrowing
+     *The BorrowRepository  used to retrieve user-related borrows
+     *I put a findBy and not a findAll to retrieve only those of the current user
+     */
     #[Route('/', name: 'app_borrow_index', methods: ['GET'])]
     public function index(BorrowRepository $borrowRepository): Response
     {
@@ -22,6 +30,13 @@ class BorrowController extends AbstractController
         ]);
     }
 
+    /*
+     *function to add a borrow
+     *request to retrieve the data submitted by the form
+     * the EntityManager to be able to persist the data
+     * create new instance borrow
+     * the response will return the form creation page
+     */
     #[Route('/new', name: 'app_borrow_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -43,6 +58,9 @@ class BorrowController extends AbstractController
         ]);
     }
 
+    /*
+     *function for display borrow
+     */
     #[Route('/{id}', name: 'app_borrow_show', methods: ['GET'])]
     public function show(Borrow $borrow): Response
     {
@@ -51,6 +69,10 @@ class BorrowController extends AbstractController
         ]);
     }
 
+   /*
+    *update Borrow
+    * recover the request, recover the borrow, and the manager to be able to send to the database
+    */
     #[Route('/{id}/edit', name: 'app_borrow_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Borrow $borrow, EntityManagerInterface $entityManager): Response
     {
@@ -69,6 +91,10 @@ class BorrowController extends AbstractController
         ]);
     }
 
+    /*
+     * remove the borrow and redirect after deletion to index page
+     * call the instance of the borrow to delete
+     */
     #[Route('/{id}', name: 'app_borrow_delete', methods: ['POST'])]
     public function delete(Request $request, Borrow $borrow, EntityManagerInterface $entityManager): Response
     {
@@ -80,6 +106,11 @@ class BorrowController extends AbstractController
         return $this->redirectToRoute('app_borrow_index', [], Response::HTTP_SEE_OTHER);
     }
 
+    /*
+     *function for unfinished loans
+     *retrieve the parameter value of the current query
+     *call the repository function for dates. Using getUser to get the one that concerns the current user
+     */
     #[Route('/search/borrow', name: 'app_search_borrow', methods: ['GET', 'POST'])]
     public function search(Request $request, BorrowRepository $borrowRepository): Response
     {

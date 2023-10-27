@@ -22,6 +22,10 @@ class ItemsCollectionRepository extends ServiceEntityRepository
         parent::__construct($registry, ItemsCollection::class);
     }
 
+    /*
+     * search articles based on keywords
+     * verify keyword present before send request
+     */
     public function searchByWord($wordKey, int $id)
     {
         $query = $this->createQueryBuilder('itemC');
@@ -32,6 +36,10 @@ class ItemsCollectionRepository extends ServiceEntityRepository
             return $query->getQuery()->getResult();
     }
 
+    /*
+     * search articles based on editor
+     * verify keyword present before send request
+     */
     public function searchByEditor($wordKey, int $id)
     {
         $query = $this->createQueryBuilder('itemC');

@@ -85,6 +85,10 @@ class Category
         return $this->items_collection;
     }
 
+    /*
+     * adds an item to the collection but first checks that it is not already associated
+     * Return an instance to be able to reuse it by chaining it
+     */
     public function addItemsCollection(ItemsCollection $itemsCollection): static
     {
         if (!$this->items_collection->contains($itemsCollection)) {
@@ -95,6 +99,10 @@ class Category
         return $this;
     }
 
+    /*
+     * function which checks that the item is present in the category if this is the case deletes
+     * update the modify category
+     */
     public function removeItemsCollection(ItemsCollection $itemsCollection): static
     {
         if ($this->items_collection->removeElement($itemsCollection)) {

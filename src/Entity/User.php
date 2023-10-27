@@ -170,6 +170,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->library;
     }
 
+    /*
+     * adds a library to the l'user but first checks that it is not already associated
+     * Return an instance to be able to reuse it by chaining it
+     */
     public function addLibrary(Library $library): static
     {
         if (!$this->library->contains($library)) {
@@ -180,6 +184,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    /*
+     * delete a library from the user but first check that it is present
+     */
     public function removeLibrary(Library $library): static
     {
         if ($this->library->removeElement($library)) {
@@ -204,6 +211,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->item;
     }
 
+    /*
+    * adds an item to user but first checks that it is not already associated
+    * Return an instance to be able to reuse it by chaining it
+    */
     public function addItem(ItemsCollection $item): static
     {
         if (!$this->item->contains($item)) {
@@ -214,6 +225,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    /*
+     * remove an item from user but first checks that it is present
+     */
     public function removeItem(ItemsCollection $item): static
     {
         if ($this->item->removeElement($item)) {

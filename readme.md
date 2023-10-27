@@ -1,3 +1,21 @@
+**Guide d'installation**
+
+1. Création de la base de données
+- Aller sur le fichier .env et décommenter la DATABASE_URL pour votre propre configuration
+- Effectuer les modifications pour app mettre votre nom d'utilisateur de BDD (base de données)
+    - Changer le !Change Me par votre mot de passe de BDD
+    - Après le slash mettre votre nom que vous voulez pour le projet 
+- Aller sur le terminal et faire un symfony console d:d:c
+
+2. Installation du gestionnaire de dépendances
+- Faire un composer install
+- Faire un npm install
+- Faire un npm run watch et le laisser tourner, si vous souhaitez ouvrir un nouveau terminal appuyer sur le +
+  (Pour mieux vous repérer dans les terminaux, vous pouvez en faisant un clic droit renommer votre terminal en run ou npm par exemple)
+
+3. Pour lancer le projet faite dans un nouveau terminal un symfony serve
+
+
 **Cahier des charges : Gestion de la bibliothèque personnelle**
 **1. Introduction**
    Le projet consiste à concevoir et développer une application Web personnalisée pour la gestion
@@ -32,7 +50,7 @@
 **5. Fonctionnalités de recherche avancée :**
 - __Recherche par mots-clés pour trouver des éléments spécifiques dans la collection.__
 - __Recherche par nom de l'éditeur pour filtrer les éléments en fonction de leur source.__
-- Recherche par date d’emprunts si l’emprunt n’est pas terminé.
+- __Recherche par date d’emprunts si l’emprunt n’est pas terminé.__
 - __Recherche par date d'ajout pour accéder rapidement aux éléments récemment ajoutés à la
   collection.__
 - __Possibilité de filtrer les résultats de recherche en fonction de critères spécifiques tels que le type,

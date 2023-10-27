@@ -14,6 +14,11 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('items/collection')]
 class ItemsCollectionController extends AbstractController
 {
+    /*
+    *function to have all the items
+    *The ItemRepository  used to retrieve user-related borrows
+    *I put a findBy and not a findAll to retrieve only those of the current user
+    */
     #[Route('item/collection', name: 'app_items', methods: ['GET'])]
     public function index(ItemsCollectionRepository $itemsCollectionRepository): Response
     {
@@ -22,6 +27,12 @@ class ItemsCollectionController extends AbstractController
         ]);
     }
 
+    /*
+    *function to add item
+    *request to retrieve the data submitted by the form
+    * the EntityManager to be able to persist the data
+    * the response will return the form creation page
+    */
     #[Route('item/addItem', name: 'add_item', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $em): Response
     {
@@ -53,6 +64,10 @@ class ItemsCollectionController extends AbstractController
 //        ]);
 //    }
 
+        /*
+        *update item
+        * recover the request, recover the item, and the manager to be able to send to the database
+        */
     #[Route('/{id}/edit', name: 'edit_item', methods: ['GET', 'POST'])]
     public function edit(Request $request, ItemsCollection $itemsCollection, EntityManagerInterface $em): Response
     {
@@ -71,6 +86,11 @@ class ItemsCollectionController extends AbstractController
         ]);
     }
 
+    /*
+     * remove the item and redirect after deletion to index page
+     * call the instance of the item to delete
+     * execute if token valid
+     */
     #[Route('/{id}', name: 'app_items_collection_delete', methods: ['POST'])]
     public function delete(Request $request, ItemsCollection $itemsCollection, EntityManagerInterface $entityManager): Response
     {
@@ -82,6 +102,11 @@ class ItemsCollectionController extends AbstractController
         return $this->redirectToRoute('app_library', [], Response::HTTP_SEE_OTHER);
     }
 
+    /*
+     * function search by keyWord
+     * request to retrieve the data submitted
+     * if the parameter is found then it executes the function and returns the view otherwise it returns an empty array
+     */
  #[Route('/search', name: 'app_items_search', methods: ['GET'])]
     public function search(Request $request, ItemsCollectionRepository $itemsCollectionRepository):Response
     {
@@ -95,6 +120,12 @@ class ItemsCollectionController extends AbstractController
             'results'=>$item,
         ]);
     }
+
+    /*
+    * function search by editor
+    * request to retrieve the data submitted
+    * if the parameter is found then it executes the function and returns the view otherwise it returns an empty array
+    */
     #[Route('/searchByEditor', name: 'app_items_search_editor', methods: ['GET'])]
     public function searchByEditor(Request $request, ItemsCollectionRepository $itemsCollectionRepository):Response
     {

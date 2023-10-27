@@ -14,6 +14,11 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/library')]
 class LibraryController extends AbstractController
 {
+    /*
+     *function to have all the libraries
+     *The libraryRepository used to retrieve user-related libraries
+     *I put a findBy and not a findAll to retrieve only those of the current user
+     */
     #[Route('/', name: 'app_library', methods: ['GET'])]
     public function index(LibraryRepository $libraryRepository): Response
     {
@@ -22,6 +27,13 @@ class LibraryController extends AbstractController
         ]);
     }
 
+    /*
+     *function to add a library
+     *request to retrieve the data submitted by the form
+     * the EntityManager to be able to persist the data
+     * create new instance library
+     * the response will return the form creation page
+     */
     #[Route('/add', name: 'add_library', methods: ['GET', 'POST'])]
     public function add(Request $request, EntityManagerInterface $em): Response
     {
@@ -47,6 +59,9 @@ class LibraryController extends AbstractController
         ]);
     }
 
+    /*
+     *function for display library
+     */
     #[Route('/{id}', name: 'show_library', methods: ['GET'])]
     public function show(Library $library): Response
     {
@@ -55,6 +70,10 @@ class LibraryController extends AbstractController
         ]);
     }
 
+    /*
+    *update library
+    * recover the request, recover the library, and the manager to be able to send to the database
+    */
     #[Route('/{id}/edit', name: 'edit_library', methods: ['GET', 'POST'])]
     public function edit(Request $request, Library $library, EntityManagerInterface $entityManager): Response
     {
@@ -73,6 +92,10 @@ class LibraryController extends AbstractController
         ]);
     }
 
+    /*
+    * remove the library and redirect after deletion to index page
+    * call the instance of the library to delete
+    */
     #[Route('/{id}', name: 'delete_library', methods: ['POST'])]
     public function delete(Request $request, Library $library, EntityManagerInterface $entityManager): Response
     {
